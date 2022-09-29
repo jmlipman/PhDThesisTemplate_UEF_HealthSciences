@@ -1,0 +1,266 @@
+%% Example main file for UEF thesis
+%
+\documentclass[b5paper,12pt]{memoir}  % memoir class documentation: https://www.ctan.org/pkg/memoir
+%
+%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%
+%
+% language and font encoding
+%
+\usepackage[english]{babel} % https://www.ctan.org/pkg/babel
+\usepackage[utf8]{inputenc} % https://www.ctan.org/pkg/inputenc
+\usepackage{ae}             % https://www.ctan.org/tex-archive/fonts/ae/
+%
+% Specifying fonts
+%
+\usepackage{tgpagella}    % Sets TeX Gyre Pagella as the default (serif) font for the document.
+\usepackage[sc]{mathpazo} % Used for mathematical typesetting with the Palatino fonts.
+%
+\usepackage{blindtext} % This is used in the example-file just to generate some text.
+                       % You can remove this in the real case.
+%
+% Specifying citing matters
+%
+%\usepackage{cite}
+\usepackage{natbib}
+%
+% For figures
+%
+\usepackage[dvips]{graphicx} % https://www.ctan.org/pkg/graphicx
+\usepackage{epsfig}          % https://www.ctan.org/pkg/epsfig
+\usepackage{xcolor}          % https://www.ctan.org/pkg/xcolor
+%
+% For math
+%
+\usepackage{amsfonts} % https://www.ctan.org/pkg/amsfonts
+\usepackage{amsmath}  % https://www.ctan.org/pkg/amsmath
+\usepackage{amsthm}   % https://www.ctan.org/pkg/amsthm
+\usepackage{amssymb}  % is a \LaTeX{} option that defines symbol names for all the math symbols in amsfonts
+\usepackage{bbm}
+\usepackage{svg}
+%
+% Miscellaneous
+%
+\usepackage{url}      % https://www.ctan.org/tex-archive/macros/latex/contrib/url/
+
+
+
+% MIGUEL'S MODIFICATIONS
+\DisemulatePackage{setspace}
+\usepackage{setspace}
+%\onehalfspacing
+\singlespacing
+
+
+%\footskip .25in
+
+
+
+\usepackage{siunitx} % For writing "micro" with Greek letters.
+\usepackage{multirow}
+\definecolor{red}{rgb}{1, 0, 0} % Miguel: necessary for the line below
+\newcommand{\revise}[1]{{\color{red}{\textbf{#1}}}} % Miguel: Custom command to highlight things
+\renewcommand\familydefault{\sfdefault} % Miguel: Change the font of the entire document to SF
+%\setlength\bibhang{0in} % Miguel: Removes the indentation (all lines except the first one of each entry) of the bibliography.
+\usepackage[hang,flushmargin]{footmisc} % Miguel: Removes indentation in the footnote
+\usepackage{lipsum}  % Miguel: lovely lorem ipsum package
+\usepackage{chngcntr} % Miguel: For later using the command "counterwithout" to change fig/tab numbering
+\hyphenpenalty=10000 % Miguel: avoid breaking words
+
+\usepackage{tocloft} % Miguel: For the line below
+\renewcommand{\cftchapterleader}{\textbf{\cftdotfill{0}}} % Miguel: add dots in chapters (ToC)
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%
+  %  The file uefthesis.sty contains relevant definitions for the thesis.
+  %  This file should not be modified!!
+  %  If you want to use your own definitions you should prepare your own mystyle.sty file
+%
+\usepackage{UEF_thesis}
+
+% Miguel: This is for removing text justification. It seems that it doesn't need to be mandatory.
+\usepackage{ragged2e}
+\setlength{\RaggedRightParfillskip}{.25\textwidth plus 1fil}
+\setlength{\RaggedRightRightskip}{0pt plus .1\textwidth}
+\setlength{\RaggedRightParindent}{2em}
+\RaggedRight
+
+%
+%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%
+%
+\usepackage{pdfpages}
+
+\usepackage{enumitem}
+\let\svitem\item%
+\def\mybox#1{\makebox[2cm][l]{#1}}
+\newenvironment{leftitemize}
+{\renewcommand\item[1][$\bullet$]{\svitem[\mybox{##1}]}%
+  \begin{itemize}[leftmargin=\dimexpr2cm+\labelsep]}{\end{itemize}}
+
+\begin{document}
+%
+%\frontmatter
+%
+%  File opening.tex contains the layout for title page, abstract etc.
+%  You should modify it suitably.
+%
+%\iffalse
+\include{opening}
+%
+%\hfill % Miguel: so that the empty page includes a number
+\cleardoublepage
+
+%
+% Create the table of contents
+\renewcommand{\contentsname}{CONTENTS} % Change title of ToC
+\tableofcontents*
+
+%
+  %% If you like to have a list of figures, list of tables, or list of symbols:
+  %
+  % \clearpage
+  % \listoffigures
+  % \clearpage
+  % \listoftables
+  % \clearpage
+\include{mysymbols}
+%\fi
+%
+%\mainmatter
+%
+%% Here is the main text in the file examples.tex.
+%
+% WORD TEMPLATE: https://kamu.uef.fi/en/tietopankki/guides-and-instructions/theses/
+
+\counterwithout{figure}{chapter} % Miguel: Changes the number of figures and tables, from
+\counterwithout{table}{chapter} % 1.1, 1.2... to 1, 2, etc.
+\counterwithout{equation}{chapter}
+\include{1_intro}
+\include{2_relatedwork}
+\include{3_papers}
+\include{4_discussion}
+
+\renewcommand{\bibsection}{\section*{\Large References}} % Miguel: Change "bibliography" to "references"
+\label{bibbib}
+\renewcommand\bibpreamble{\vspace{1\baselineskip}} % choose a suitable vert. skip
+\setlength{\bibsep}{0pt} % no extra vert. space between bib items
+
+
+\bibliographystyle{agsm}
+{\fontsize{11pt}{0}
+\bibliography{biblio}}
+
+%
+%  If you have appendices then they can be included here
+%
+%\include{appendices}
+%
+% If you are including articles in your thesis, the cover pages are needed
+% ADD THIS LATER...
+%\include{coverpages}
+%
+
+% ARTICLES INCLUDED IN THE THESIS
+
+\cleardoublepage
+
+\pagenumbering{gobble}
+\begin{vplace}[0.7]
+\centering
+{\fontsize{16pt}{0}\selectfont ORIGINAL PUBLICATIONS (I-V)}
+\end{vplace}
+
+\cleardoublepage
+\begin{vplace}[0.7]
+\centering
+\textbf{I} \\[1cm]
+
+\textbf{Automatic Rodent Brain MRI Lesion Segmentation with \\ Fully Convolutional Networks}\\[1cm]
+
+Juan Miguel Valverde, Artem Shatillo, Riccardo De Feo, Olli Gröhn, \\ Alejandra Sierra, Jussi Tohka \\[1cm]
+
+International Workshop on Machine Learning in Medical Imaging, 195-202, 2019 \\[1cm]
+
+Printed with the kind permission of Springer Nature
+\end{vplace}
+
+\cleardoublepage
+
+\includepdf[pages=-]{articles/article.pdf}
+
+
+\cleardoublepage
+\begin{vplace}[0.7]
+\centering
+\textbf{II} \\[1cm]
+
+\textbf{RatLesNetv2: A Fully Convolutional Network for Rodent Brain Lesion Segmentation}\\[1cm]
+
+Juan Miguel Valverde, Artem Shatillo, Riccardo De Feo, Olli Gröhn, \\ Alejandra Sierra, Jussi Tohka \\[1cm]
+
+Frontiers in neuroscience 14: 610239, 2020
+\end{vplace}
+
+
+\cleardoublepage
+
+
+\includepdf[pages=-]{articles/article.pdf}
+
+\cleardoublepage
+\begin{vplace}[0.7]
+\centering
+\textbf{III} \\[1cm]
+
+\textbf{Automatic cerebral hemisphere segmentation in rat MRI with lesions via attention-based convolutional neural networks}\\[1cm]
+
+Juan Miguel Valverde, Artem Shatillo, Riccardo De Feo, Jussi Tohka \\[1cm]
+
+arXiv:2108.01941, 2022
+\end{vplace}
+
+\cleardoublepage
+
+
+\includepdf[pages=-]{articles/article.pdf}
+
+
+\cleardoublepage
+\begin{vplace}[0.7]
+\centering
+\textbf{IV} \\[1cm]
+
+\textbf{Transfer Learning in Magnetic Resonance Brain Imaging: a Systematic Review}\\[1cm]
+
+Juan Miguel Valverde, Vandad Imani, Ali Abdollahzadeh, Riccardo De Feo, Mithilesh Prakash, Robert Ciszek, Jussi Tohka \\[1cm]
+
+Journal of imaging 7 (4), 66, 2021
+\end{vplace}
+
+\cleardoublepage
+
+
+\includepdf[pages=-]{articles/article.pdf}
+
+
+\cleardoublepage
+\begin{vplace}[0.7]
+\centering
+\textbf{V} \\[1cm]
+
+\textbf{Region-wise Loss for Biomedical Image Segmentation}\\[1cm]
+
+Juan Miguel Valverde, Jussi Tohka \\[1cm]
+
+arXiv:2108.01405, 2022
+\end{vplace}
+
+\cleardoublepage
+
+
+\includepdf[pages=-]{articles/article.pdf}
+
+\end{document}
+

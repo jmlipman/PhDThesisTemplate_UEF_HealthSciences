@@ -1,0 +1,243 @@
+%% Example file for the frontmatter
+%
+% This file contains layout setting examples for front page, abstract, etc.
+%
+% Note: for the university logo the file UEF_logo.eps is needed.
+%
+\title{{Title}}
+\subtitle{Subtitle} % Commend this line if you don't have a subtitle
+\author{Your Name}
+%
+% Macro for frontpage: volume, place, year, department, and place and time of the examination
+%
+
+\makefrontpage{\revise{77}}{}{}
+{A.I. Virtanen Institute for Molecular Sciences}
+{\revise{SN201 Auditorium, Kuopio \\ on September 6\textsuperscript{th}, 2022, at 12:00}}
+ {}{} % if like to add an figure here replace empty brackets with 
+      % {your_file_name.eps}{figure_height}, where figure_height is in mm, e.g. 50mm.   
+%
+\clearpage
+
+%
+% Page for printing place, editors, and identification numbers,
+% edit the lines below as needed
+%
+\begin{center}
+\vspace*{\fill}
+\renewcommand{\baselinestretch}{1.4}
+Series Editors \\
+Professor Tomi Laitinen, M.D., Ph.D. \\
+Institute of Clinical Medicine, Clinical Physiology and Nuclear Medicine \\
+Faculty of Health Sciences\\[0.7cm]
+
+Professor Tarja Kvist, Ph.D. \\
+Department of Nursing Science \\
+Faculty of Health Sciences \\[0.7cm]
+
+Professor Ville Leinonen, M.D., Ph.D. \\
+Institute of Clinical Medicine, Neurosurgery \\
+Faculty of Health Sciences \\[0.7cm]
+
+Professor Tarja Malm, Ph.D. \\
+A.I. Virtanen Institute for Molecular Sciences \\
+Faculty of Health Sciences \\[0.7cm]
+
+Lecturer Veli-Pekka Ranta, Ph.D. \\
+School of Pharmacy \\
+Faculty of Health Sciences \\[0.7cm]
+  %Editors:  Pertti Pasanen, Pekka Toivanen,\\
+  %Jukka Tuomela, and Matti Vornanen\\[1cm]
+  
+  Distributor:\\
+  University of Eastern Finland\\
+  Kuopio Campus Library \\
+  P.O.Box 1627 \\
+  FI-70211 Kuopio, Finland \\
+  http://www.uef.fi/kirjasto\\[0.7cm]
+  
+  PunaMusta Oy \\
+  Joensuu, 2022\\[1cm]
+ 
+  ISBN: \revise{978-952-61-4622-5} (print/nid.)\\
+  ISBN: \revise{978-952-61-4623-2} (PDF)\\
+  ISSNL: \revise{1798-5706} \\
+  ISSN:  \revise{1798-5706} \\
+  ISSN:  \revise{1798-5714} (PDF)
+\end{center}
+%\clearpage
+%
+% Page for supervisors', reviewers' and opponent's information,
+% edit the lines below as needed
+%
+\begin{tabular}{p{45mm}l}
+  Author's address: & A.I. Virtanen Institute for Molecular Sciences \\
+              & University of Eastern Finland\\ % or Institute of Photonics
+              & KUOPIO \\
+              & FINLAND \\ [5mm]
+  Doctoral programme: & Doctoral Programme in Molecular Medicine \\ [5mm]
+  Supervisors:& Professor \revise{Name Surname}, Ph.D\\
+              & A.I. Virtanen Institute for Molecular Sciences \\
+              & University of Eastern Finland \\
+              & KUOPIO \\
+              & FINLAND \\[5mm]
+              
+              & Professor \revise{Name Surname}, Ph.D. \\
+              & A.I. Virtanen Institute for Molecular Sciences \\
+              & University of Eastern Finland \\
+              & KUOPIO \\
+              & FINLAND \\[5mm]
+              
+  Reviewers:  & Assistant Professor \revise{Name Surname}, Ph.D. \\
+              & Institute of  \\
+              & University of  \\
+              & City \\
+              & Country \\[5mm]
+              & Senior Lecturer \revise{Name Surname}, Ph.D. \\
+              & Center for  \\
+              & University of  \\
+              & Department of (affiliation 2) \\
+              & University Hospital \\
+              & City \\
+              & Country \\[5mm]
+  Opponent:   & Professor \revise{Name Surname}, Ph.D.\\
+              & Department of  \\
+              & University of \\
+              & City \\
+              & Country
+\end{tabular}
+%
+\cleardoublepage
+%\clearpage
+%
+% Abstract page with heading
+%
+\pagenumbering{arabic}
+\setcounter{page}{7}
+\makeabstracthead{Kuopio}{2022} % place and year
+%
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\section*{ABSTRACT}
+%
+
+Abstract goes here.
+
+
+%
+\par
+\vspace{5mm}
+\noindent
+%\textit{\textbf{Universal Decimal Classification:} \revise{53.084.85, 535.3, 535.4, 681.7.02} \\
+%
+% select (or add) a suitable code
+%
+%\textbf{MSC 2010:} 35J20,  47G10, 30F15 \\   % see http://www.ams.org/msc/msc2010.html
+%\textbf{PACS 2010:} 42.40.Eq, 42.40.Jv  \\   % see https://publishing.aip.org/publishing/pacs/pacs-2010-regular-edition
+%\textbf{OCIS codes:} \revise{050.1960, 130.4815}  \\   % see https://www.osapublishing.org/submit/ocis/
+%
+%\textbf{Keywords:} \revise{Diffraction gratings, optical switching devices, partial differential equations, complex analysis}}
+Medical Subject Headings: \revise{Keywords}.
+
+\vspace{5mm}
+\noindent
+Yleinen suomalainen ontologia: \revise{Keywords in Finnish}
+%
+\clearpage
+%
+\addcontentsline{toc}{chapter}{ACKNOWLEDGEMENTS}
+\section*{{\fontsize{16pt}{0}\selectfont ACKNOWLEDGEMENTS}}
+
+
+
+\vspace{0.5cm}
+%
+
+Acknowledgements go here.
+
+
+%
+\par
+\vspace{9mm}
+\noindent
+Kuopio, September 2022    \\[3mm]
+\begin{figure}[h]
+    \includegraphics[width=0.4\linewidth]{figures/signature.png}
+\end{figure}
+      
+\indent\hspace{6mm}\textit{\theauthor}
+\vfill
+
+\newpage
+\par
+
+\phantom{.}
+
+\vspace{5cm}
+\noindent
+\lq All we have to decide is what to do with the time that is given us\rq
+
+
+\vspace{1cm} \noindent 
+\textit{Gandalf, The Lord of the Rings: The Fellowship of the Ring}
+\vfill
+
+%
+\cleardoublepage
+%
+% Page for publications - in the case of monograph possible publications
+% can be listed at the end of introduction.
+%
+\section*{{\fontsize{16pt}{0}\selectfont \normalfont LIST OF ORIGINAL PUBLICATIONS}}
+
+%
+\vspace{0.1in}
+This dissertation is based on the following original publications:
+%
+\begin{enumerate}
+%
+\item[\textbf{\myp{1}}]
+Valverde, J.M., Shatillo, A., De Feo, R., Gröhn, O., Sierra, A. and Tohka, J. Automatic rodent brain mri lesion segmentation with fully convolutional networks. In \textit{International Workshop on Machine Learning in Medical Imaging} (pp. 195-202). \textit{Springer, Cham} (2019).
+
+\item[\textbf{\myp{2}}]
+Valverde, J.M., Shatillo, A., De Feo, R., Gröhn, O., Sierra, A. and Tohka, J. Ratlesnetv2: a fully convolutional network for rodent brain lesion segmentation. \textit{Frontiers in neuroscience}, (14) 610239 (2020).
+
+\item[\textbf{\myp{3}}]
+Valverde, J.M., Shatillo, A., De Feo, R. and Tohka, J. Automatic cerebral hemisphere segmentation in rat MRI with lesions via attention-based convolutional neural networks. arXiv:2108.01941. Submitted to \textit{NeuroInformatics} (in revision).
+
+\item[\textbf{\myp{4}}]
+Valverde, J.M., Imani, V., Abdollahzadeh, A., De Feo, R., Prakash, M., Ciszek, R. and Tohka, J. Transfer learning in magnetic resonance brain imaging: A systematic review. \textit{Journal of imaging}, 7(4), p.66 (2021).
+
+\item[\textbf{\myp{5}}]
+Valverde, J.M. and Tohka, J. Region-wise Loss for Biomedical Image Segmentation. arXiv:2108.01405. Submitted to \textit{Pattern Recognition} (in revision).
+%
+\end{enumerate}
+%
+\vspace{2mm}
+\noindent
+The publications were adapted with the permission of the copyright owners.
+The software we developed in our works is open source and publicly available:
+
+\begin{itemize}
+\item RatLesNetv2 for lesion segmentation in rodent MR images: \\ https://github.com/jmlipman/RatLesNetv2
+\item MedicDeepLabv3+ for cerebral hemisphere segmentation in rodent MR images: https://github.com/jmlipman/MedicDeepLabv3plus
+\item Region-wise loss function: https://github.com/jmlipman/RegionWiseLoss
+\end{itemize}
+\vspace{20mm}
+%
+\section*{AUTHOR'S CONTRIBUTION}
+%
+% Only for thesis consisting on articles.
+%
+Your contributions
+
+%
+\vfill
+
+
+
+
+
+
+
+
+

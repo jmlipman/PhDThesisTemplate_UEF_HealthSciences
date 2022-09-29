@@ -1,0 +1,22 @@
+\DeclareDatamodelEntrytypes{inspieproceedings}
+\DeclareDatamodelEntryfields[inspieproceedings]{
+    author,
+    title,
+    booktitle,
+    year,
+    editor,
+    pages,
+    organization,
+    publsher,
+    month,
+    note,
+}
+\DeclareDatamodelEntrytypes{web}
+\DeclareDatamodelFields[type=field,datatype=literal]{nameweb}
+\DeclareDatamodelEntryfields[web]{
+    nameweb,
+    note,
+    url,
+    date,
+}
+

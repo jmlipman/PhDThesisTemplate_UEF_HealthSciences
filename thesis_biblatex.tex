@@ -1,0 +1,96 @@
+%% Example main file for UEF thesis
+%
+\documentclass[b5paper,10pt]{memoir}  % memoir class documentation: https://www.ctan.org/pkg/memoir
+%
+%%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%
+%
+% language and font encoding
+%
+\usepackage[english]{babel} % https://www.ctan.org/pkg/babel
+\usepackage[utf8]{inputenc} % https://www.ctan.org/pkg/inputenc
+\usepackage{ae}             % https://www.ctan.org/tex-archive/fonts/ae/
+%
+% specifying fonts
+%
+\usepackage{tgpagella}    % Sets TeX Gyre Pagella as the default (serif) font for the document.
+\usepackage[sc]{mathpazo} % Used for mathematical typesetting with the Palatino fonts.
+%
+\usepackage{blindtext} % This is used in the example-file just to generate some text.
+                       % You can remove this in the real case.
+%
+%% Specifying citing matters with biblatex:
+%
+\usepackage{enumitem}
+\usepackage[datamodel=uefdm,maxnames=4,safeinputenc,defernumbers=true,style=phys,biblabel=brackets,backend=biber]{biblatex} % https://www.ctan.org/pkg/biblatex?lang=en - http://biblatex-biber.sourceforge.net/
+%
+%% Specifying the appropriate .bib file for biblatex
+%
+\addbibresource{biblio.bib}
+%
+% For figures
+%
+\usepackage[dvips]{graphicx} % https://www.ctan.org/pkg/graphicx
+\usepackage{epsfig}          % https://www.ctan.org/pkg/epsfig
+\usepackage{xcolor}          % https://www.ctan.org/pkg/xcolor
+%
+% For math
+%
+\usepackage{amsfonts} % https://www.ctan.org/pkg/amsfonts
+\usepackage{amsmath}  % https://www.ctan.org/pkg/amsmath
+\usepackage{amsthm}   % https://www.ctan.org/pkg/amsthm
+\usepackage{amssymb}  % is a \LaTeX{} option that defines symbol names for all the math symbols in amsfonts
+%
+% Miscellaneous
+%
+\usepackage{url}      % https://www.ctan.org/tex-archive/macros/latex/contrib/url/
+
+%%
+  %  The files UEF_thesis.sty and UEF_biblatex contain relevant definitions for the thesis.
+  %  These files should not be modified!!
+  %  If you want to use your own definitions you should prepare your own mystyle.sty file
+%
+\usepackage{UEF_thesis,UEF_biblatex}
+%
+%%%%%%%%%%%%%%%%%%%%% Document %%%%%%%%%%%%%%%%%%%%%
+%
+\begin{document}
+%
+\frontmatter
+%
+%  File opening.tex contains the layout for title page, abstract etc.
+%  You should modify it suitably.
+%
+\include{opening_biblatex}
+%
+%% These commands return the bibliography numbering to arabic, with square brackets. Comment both if you use bibtex.
+%
+\cleardoublepage
+%
+\tableofcontents* % Create the table of contents
+%
+  %% If you like to have a list of figures, list of tables, or list of symbols:
+  %
+  % \clearpage
+  % \listoffigures
+  % \clearpage
+  % \listoftables
+  % \clearpage
+  % \include{mysymbols}
+%
+\mainmatter
+%
+%% Here is the main text in the file examples.tex.
+%
+\include{examples}
+%
+\printbibliography[notkeyword=myown,resetnumbers,title=BIBLIOGRAPHY]
+%
+%  If you have appendices then they can be included here
+%
+\include{appendices}
+%
+% If you are including articles in your thesis, the cover pages are needed
+%
+\include{coverpages} % Edit accordingly
+%
+\end{document}

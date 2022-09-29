@@ -1,0 +1,241 @@
+% Required modifications to memoir class style for UEF PhD thesis
+   % version 1.0
+   %
+   % Please, don't modify this file. If you like to define something
+   % by your own, put those things in a separate mystyle.sty -file.
+   %
+   % Created by Jukka Tuomela and Markku Kuittinen.
+   % \renewcommand*{\chaptitlefont}{\fontsize{16pt}{0}\sffamily}
+\makechapterstyle{invhangnum}{%
+  \setlength\beforechapskip{0pt}%
+  \renewcommand*\chapterheadstart{\vspace{\beforechapskip}}%
+  \setlength\afterchapskip{2\onelineskip plus .2\onelineskip minus 0.2\onelineskip}%  
+  \renewcommand\chaptitlefont{\Huge\bfseries}
+  \setlength\midchapskip{-\baselineskip}%
+  \renewcommand\chapnumfont{\Huge\bfseries}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+      \raisebox{\dimexpr\midchapskip+\baselineskip\relax}[0pt][0pt]{%
+        \makebox[0pt][l]{%
+        \makebox[\dimexpr\textwidth+4em\relax][l]{%
+          \parbox[t]{\textwidth}{\mbox{}}%
+          \parbox[t]{4em}{\hfill\chapnumfont}}}}}%
+  \renewcommand*{\printchaptertitle}[1]{%
+    \raisebox{\dimexpr\midchapskip+\baselineskip\relax}[0pt][0pt]{%
+      \parbox[t]{\textwidth}{\raggedright\chaptitlefont \thechapter \hspace{0.2in} ##1}}}%
+}
+\chapterstyle{invhangnum}
+%
+% Commands for the front page
+%
+\renewcommand{\theequation}{\arabic{equation}} % Miguel: eqs like (1), (2),.. instead of 1.1, 1.2
+
+\newcommand{\subtitle}[1]{%
+  \gdef\thesubtitle{#1}
+}
+\newcommand{\thesubtitle}{}
+%
+\newcommand{\makefrontpage}[7]{%
+  \pagenumbering{gobble}
+  \par
+    \vspace*{-22mm}
+  \begin{center}
+  \par
+  \vspace{60mm}
+  \setlength{\baselineskip}{9mm}
+  {\fontsize{16pt}{0}\bfseries\sffamily \MakeUppercase\thetitle}\\[3mm]
+  {\fontsize{11pt}{0}\bfseries\sffamily \MakeUppercase\thesubtitle}
+  \newpage \phantom{a} \newpage
+  \vspace*{-22mm}
+  \par
+  \vspace{50mm}
+  {\large \theauthor}\\[10mm]
+  \setlength{\baselineskip}{9mm}
+  {\fontsize{16pt}{0}\bfseries\sffamily \MakeUppercase\thetitle}\\[5mm]
+  {\fontsize{11pt}{0}\bfseries\sffamily \MakeUppercase\thesubtitle}
+  \if\relax\detokenize{#6}\relax
+    \vfill
+  \else
+    \vfill
+    \includegraphics[height=#7]{#6}
+    \vfill
+  \fi
+  \linespread{1.08}
+  \end{center}
+  \vspace{2mm}
+  \begin{center}
+  To be presented by permission of the Faculty of Health Sciences, University of Eastern Finland for public examination in #5
+  \end{center}
+  \vspace{2mm}
+    \begin{center}
+  Publications of the University of Eastern Finland \\
+  Dissertations in Health Sciences \\
+  No \revise{700}
+  \end{center}
+  \vspace{2mm}
+  \begin{center}
+  #4 \\
+  University of Eastern Finland, Kuopio\\
+  \revise{2022}
+  \end{center}
+  \par
+  \vspace{12mm}
+  \thispagestyle{title}
+}  % makefrontpage
+%
+%
+\newcommand{\makeabstracthead}[2]{%
+  \noindent
+  %\theauthor\\
+  Valverde, Juan Miguel \\
+  %\thetitle ~\thesubtitle \\
+  \noindent
+  MRI Segmentation with Deep Learning. \thesubtitle \\
+  \noindent   #1: University of Eastern Finland\\
+  \noindent Publications of the University of Eastern Finland\\
+  \noindent Dissertations in Health Sciences \revise{700. #2, 100 p.}\\ % The last number is the number of pages.
+  \noindent ISBN: \revise{978-952-61-4622-5} (print) \\
+  \noindent ISSNL: \revise{1798-5706} \\
+  \noindent ISSN: \revise{1798-5706} \\
+  \noindent ISBN \revise{978-952-61-4623-2} (PDF) \\
+  \noindent ISSN: \revise{1798-5714} (PDF)
+}
+%
+\newcommand{\makecover}{%
+  \begin{center}
+  \vspace*{94mm}
+  \setlength{\baselineskip}{9mm}
+  {\Huge\fontseries{sbc}\sffamily \thetitle}\\[3mm]
+  {\Large\bfseries\sffamily \thesubtitle}
+  \par
+  \end{center}
+}
+%
+\newcommand{\makefront}[4]{%
+  \pagenumbering{gobble}
+  \begin{center}
+  \vspace*{10mm}
+  {\LARGE\itshape \textbf{\theauthor}}\\[5mm]
+  \setlength{\baselineskip}{9mm}
+  {\Huge\fontseries{sbc}\sffamily \MakeUppercase\thetitle}\\[3mm]
+  {\Large\bfseries\sffamily \MakeUppercase\thesubtitle}
+  \vfill
+  #4
+  \vfill
+  \linespread{1.08}
+  {\normalfont\normalsize
+  Publications of the University of Eastern Finland\\
+  Dissertations in Forestry and Natural Sciences\\
+  No #1\\[4.5mm]
+  University of Eastern Finland\\
+  #2 \\
+  #3 \\
+  \vspace*{5mm}
+  }
+  \end{center}
+  \thispagestyle{title}
+} % makefront
+%
+%
+%  This puts page numbers in the right place and set headings
+%
+\copypagestyle{chapter}{plain} % make chapter a page style of its own
+\makeevenfoot{chapter}{\footnotesize\thepage}{}{}
+\makeoddfoot{chapter}{}{}{\footnotesize\thepage}
+\makeevenhead{chapter}{}{}{}
+\makeoddhead{chapter}{}{}{}
+%
+\makepagestyle{headings}
+\makeevenfoot{headings}{\footnotesize\thepage}{}{}
+\makeoddfoot{headings}{}{}{\footnotesize\thepage}
+\makeevenhead{headings}{}{}{}
+\makeoddhead{headings}{}{}{}
+\pagestyle{headings}
+%
+\captionstyle{\raggedright}
+%
+%  Setting the margins
+%
+\settrims{0pt}{0pt}
+\setlrmarginsandblock{20mm}{20mm}{*}
+\setulmarginsandblock{20mm}{25mm}{*}
+\checkandfixthelayout
+%
+% Numbering the subsections and how they are in the table of contents
+%
+\setsecnumdepth{subsection}
+\settocdepth{subsection}
+\setsecnumdepth{subsubsection}
+\settocdepth{subsubsection}
+%
+%  How chapter title looks like
+%
+\chapterstyle{invhangnum} % section
+\renewcommand*{\chaptitlefont}{\fontsize{16pt}{0}\sffamily} % Miguel: Removed "bold"
+\renewcommand*{\chapnumfont}{\fontsize{16pt}{0}\sffamily} % Miguel: Removed "bold"
+
+\iffalse
+\usepackage{titlesec}
+\titleformat{\section}
+  {\fontsize{36pt}{0}\sffamily}
+  {\thesection}{1em}{}
+\fi
+
+\setlength{\beforechapskip}{0pt}
+
+%
+%  How section titles look like
+%
+\setsecheadstyle{\fontsize{12pt}{0}\bfseries\sffamily\MakeUppercase}
+\setsubsecheadstyle{\fontsize{12pt}{0}\bfseries\sffamily}
+%
+% How figure and table captions look like
+%
+\captionstyle[\raggedright]{} % Miguel: changed "centering" for "raggedright" for left alignment of captions
+\changecaptionwidth
+\captionwidth{\textwidth}
+\captiondelim{. } % Miguel: changed from : to .
+\captionnamefont{\bfseries}
+%\captiontitlefont{\small} % makes captions with a smaller font
+%
+% Dots in the table of contents
+%
+\renewcommand{\cftdotsep}{0.5}
+%
+%  Fonts in the table of contents
+%
+\renewcommand*{\cftchapterfont}{\normalsize\bfseries\sffamily}
+\renewcommand*{\cftsectionfont}{\normalsize\sffamily}
+\renewcommand*{\cftsubsectionfont}{\normalsize\sffamily}
+
+%
+% how "table of contents" and "list of figures" are shown
+%
+\addto\captionsenglish{\renewcommand{\listfigurename}{LIST OF FIGURES}}
+\addto\captionsenglish{\renewcommand{\printloftitle}[1]{\large\bfseries\sffamily #1}}
+\addto\captionsenglish{\renewcommand{\listtablename}{LIST OF TABLES}}
+\addto\captionsenglish{\renewcommand{\printlottitle}[1]{\large\bfseries\sffamily #1}}
+\addto\captionsenglish{\renewcommand{\contentsname}{TABLE OF CONTENTS}}
+\addto\captionsenglish{\renewcommand{\printtoctitle}[1]{\Large\sffamily #1}}
+\addto\captionsenglish{\renewcommand{\bibname}{BIBLIOGRAPHY}}
+%
+% the standard environment for theorems etc
+%
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+%
+% misc
+%
+% miguel: remove bold
+\newcommand{\myp}[1]{\uppercase\expandafter{\romannumeral #1\relax}} % for 'citing' to own publications
+%
+\makeatletter
+\renewcommand{\@biblabel}[1]{\hfill[#1]} % to align biblabels to right
+\makeatother
+%
+%\setlength{\bibitemsep{\itemsep} 

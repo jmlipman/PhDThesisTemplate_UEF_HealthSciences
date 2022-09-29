@@ -1,0 +1,101 @@
+% Required modifications to biblatex style for UEF PhD thesis
+   % version 1.0
+   %
+   % Please, don't modify this file. If you like to define something
+   % by your own, put those things in a separate mystyle.sty -file.
+   %
+   % Created by Markku Kuittinen.
+%
+%
+\defbibenvironment{mypubs}     % environment for the list of own publications with Roman numerals
+  {\enumerate[label={\Roman*}]
+     {}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\mkbibbold{\hss##1}}}
+  {\endenumerate}
+  {\item}
+%
+\defbibheading{ownpub}[\bibname]{% defines the title for the list own publications to be on section level
+\section*{#1}%
+\markboth{#1}{#1}}
+%
+\DeclareFieldFormat[inspieproceedings]{title}{%
+  \iftoggle{bbx:articletitle}
+    {\mkbibquote{#1\isdot}}
+    {}%
+}
+%            
+\newbibmacro*{spie}{% defines how the organization will be printed for inspieproceedings entry
+  \setunit{\addspace}%
+  \printtext{%
+    \printlist{organization}%
+    \addspace%
+    Proc.
+  }%
+  \newunit
+}
+%
+\newbibmacro*{webdate}{% defines how the date will be printed for web entry
+  \setunit{\addspace}%
+  \printtext{\addspace
+    \usebibmacro{urldate}
+  }
+}
+\DeclareUrlCommand\directory{\urlstyle{tt}}
+\DeclareFieldFormat{journaltitle}{\mkbibemph{#1}}
+\DeclareFieldFormat[web]{nameweb}{{#1\addcomma}}
+\DeclareFieldFormat[web]{month}{#1}
+\DeclareFieldFormat[web]{year}{#1\nopunct}
+\DeclareFieldFormat[misc]{year}{\mkbibparens{#1}}
+%
+\DeclareBibliographyDriver{inspieproceedings}{% defines how inspieproceedings entry will be printed
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit\newblock
+  \usebibmacro{in:}
+  \usebibmacro{spie}
+  \usebibmacro{maintitle+booktitle}%
+    \newunit\newblock
+    \usebibmacro{byeditor+others}%
+    \newunit\newblock
+    \newunit
+    \iffieldundef{maintitle}
+      {\printfield{volume}%
+      \printfield{part}}
+    {}%
+  \newunit\newblock
+  \printfield{pages}%
+  \newunit\newblock
+  \printfield{publisher}%
+  \newunit\newblock
+  \printfield{month}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{year}%
+  \usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{web}{% defines how web entry will be printed
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \printfield[nameweb]{nameweb}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{url}%
+  \printfield{year}
+  \usebibmacro{webdate}
+  \usebibmacro{finentry}
+}
+%
+\setlength{\biblabelsep}{\labelsep}
+\setlength{\bibitemsep}{5pt plus 2pt minus 1pt}
